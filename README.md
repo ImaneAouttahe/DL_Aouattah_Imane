@@ -10,3 +10,10 @@ Importez le fichier SQL nommé databasejee.sql dans votre serveur MySQL.
 Nom d'utilisateur : admin
 
 Mot de passe : ENSAH
+
+🔐 Accès annotateurs ( vous pouvez les supprimer et ajouter d'autres annotateurs )
+karim                                 IDiWKPP4 
+salma                                  Ax99gavQ
+imane                                  0SdTbmNX
+sara                                   JNSjrvAd                           ( actif=0  ie compte desactivee)
+
