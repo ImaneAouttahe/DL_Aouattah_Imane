@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:fragment="navbar">
+<!-- fragments/navbar.html -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow sticky-top">
+    <div class="container">
+        <span class="navbar-brand fw-bold">Admin </span>
+        <div class="d-flex flex-column flex-lg-row gap-2 ms-auto">
+            <a th:href="@{/admin/creer-dataset}" class="btn btn-primary">Créer un Dataset</a>
+            <a th:href="@{/admin/liste-datasets}" class="btn btn-secondary">Liste Datasets</a>
+            <a th:href="@{/admin/gerer-annotateurs}" class="btn btn-info text-white">Gérer Annotateurs</a>
+            <form th:action="@{/logout}" method="post">
+                <button type="submit" class="btn btn-danger">Se déconnecter</button>
+            </form>
+        </div>
+    </div>
+</nav>
+</div>
+</body>
+</html>

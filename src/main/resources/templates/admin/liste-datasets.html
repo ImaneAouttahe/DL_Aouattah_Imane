@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Liste des Datasets</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+<div th:replace="~{admin/fragments/navbar :: navbar}"></div>
+<div class="container mt-5">
+  <div th:if="${errorMessage}" class="alert alert-danger" role="alert">
+    <span th:text="${errorMessage}"></span>
+  </div>
+  <h2 class="mb-4 text-center">Liste des Datasets</h2>
+
+  <table class="table table-striped table-bordered">
+    <thead class="table-dark">
+    <tr>
+      <th>Nom du Dataset</th>
+      <th>% Avancement</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="entry : ${datasetAvancements}">
+      <td th:text="${entry.key.nomDataset}">Nom Dataset</td>
+      <td th:text="${#numbers.formatDecimal(entry.value, 1, 2)} + ' %'">0%</td>
+      <td>
+        <a th:href="@{'/admin/details-dataset/' + ${entry.key.id}}" class="btn btn-info btn-sm"> <!--envooyer id de dataset-->
+          Détails
+        </a>
+        <a th:href="@{'/admin/ajouter-annotateur-dataset/' + ${entry.key.id}}" class="btn btn-primary btn-sm">
+          Ajouter Annotateur
+        </a>
+        <!-- Affichage du bouton Exporter CSV uniquement si l'avancement est de 100% -->
+        <a th:if="${entry.value == 100}"
+           th:href="@{'/admin/exporter-csv/' + ${entry.key.id}}"
+           class="btn btn-success btn-sm">
+          Exporter en CSV
+        </a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <a th:href="@{'/admin/home'}" class="btn btn-secondary btn-lg d-block mx-auto">Retour</a>
+</div>
+
+<!-- Bootstrap JS (facultatif) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
